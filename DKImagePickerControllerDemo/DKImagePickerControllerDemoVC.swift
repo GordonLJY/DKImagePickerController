@@ -62,6 +62,7 @@ class DKImagePickerControllerDemoVC: UITableViewController {
         case "Single Select":
             let pickerController = DKImagePickerController()
             pickerController.singleSelect = true
+            pickerController.autoCloseOnSingleSelect = true
             
             destination.pickerController = pickerController
             
@@ -74,6 +75,7 @@ class DKImagePickerControllerDemoVC: UITableViewController {
             
         case "UI Customization":
             let pickerController = DKImagePickerController()
+            pickerController.sourceType = .photo
             pickerController.UIDelegate = CustomUIDelegate()
             pickerController.showsCancelButton = true
             
@@ -82,6 +84,16 @@ class DKImagePickerControllerDemoVC: UITableViewController {
         case "Layout Customization":
             let pickerController = DKImagePickerController()
             pickerController.UIDelegate = CustomLayoutUIDelegate()
+            
+            destination.pickerController = pickerController
+            
+        case "Inline":
+            let pickerController = DKImagePickerController()
+            pickerController.inline = true
+            pickerController.fetchLimit = 10
+            pickerController.UIDelegate = CustomInlineLayoutUIDelegate()
+            pickerController.assetType = .allPhotos
+            pickerController.sourceType = .photo
             
             destination.pickerController = pickerController
             
